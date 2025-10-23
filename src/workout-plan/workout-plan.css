@@ -1,0 +1,22 @@
+/* Smooth scrolling for exercise list */
+.workout-plan-list {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for better UX */
+.workout-plan-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.workout-plan-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.workout-plan-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.workout-plan-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}

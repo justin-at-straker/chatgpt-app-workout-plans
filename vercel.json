@@ -1,0 +1,21 @@
+{
+	"version": 2,
+	"builds": [
+		{
+			"src": "gymshark-mcp-server/src/server.ts",
+			"use": "@vercel/node",
+			"config": {
+				"runtime": "node18.x"
+			}
+		}
+	],
+	"routes": [
+		{
+			"src": "/mcp(.*)",
+			"dest": "gymshark-mcp-server/src/server.ts"
+		}
+	],
+	"env": {
+		"BASE_URL": "@base_url"
+	}
+}
