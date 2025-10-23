@@ -1,6 +1,7 @@
 {
 	"name": "ecosystem_ui",
 	"version": "5.0.16",
+	"type": "module",
 	"description": "",
 	"main": "host/main.ts",
 	"scripts": {
