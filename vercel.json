@@ -14,8 +14,5 @@
 			"src": "/mcp(.*)",
 			"dest": "gymshark-mcp-server/src/server.ts"
 		}
-	],
-	"env": {
-		"BASE_URL": "@base_url"
-	}
+	]
 }
