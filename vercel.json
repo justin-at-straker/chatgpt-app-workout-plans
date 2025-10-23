@@ -1,9 +1,14 @@
 {
 	"version": 2,
 	"public": true,
-	"buildCommand": "pnpm install && pnpm build",
-	"outputDirectory": "assets",
 	"builds": [
+		{
+			"src": "package.json",
+			"use": "@vercel/static-build",
+			"config": {
+				"distDir": "assets"
+			}
+		},
 		{
 			"src": "gymshark-mcp-server/src/server.ts",
 			"use": "@vercel/node",
@@ -14,20 +19,12 @@
 	],
 	"routes": [
 		{
-			"src": "/(.*\\.(?:js|css|html|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)?)$",
-			"dest": "/assets/$1",
-			"headers": {
-				"Access-Control-Allow-Origin": "*"
-			}
+			"src": "/mcp(.*)",
+			"dest": "gymshark-mcp-server/src/server.ts"
 		},
 		{
-			"src": "/mcp(.*)",
-			"dest": "gymshark-mcp-server/src/server.ts",
-			"headers": {
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-				"Access-Control-Allow-Headers": "Content-Type"
-			}
+			"src": "/(.*)",
+			"dest": "/assets/$1"
 		}
 	]
 }
