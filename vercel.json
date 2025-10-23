@@ -23,8 +23,8 @@
 			"dest": "gymshark-mcp-server/src/server.ts"
 		},
 		{
-			"src": "/(.*)",
-			"dest": "/assets/$1"
+			"src": "/(.*\\.(?:js|css|html|map|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)?)$",
+			"dest": "/$1"
 		}
 	]
 }

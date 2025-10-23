@@ -38,7 +38,22 @@ type WorkoutPlanWidget = {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
-const ASSETS_DIR = path.resolve(ROOT_DIR, "assets");
+const ASSETS_DIR = (() => {
+	// Try local assets first
+	const localAssets = path.resolve(ROOT_DIR, "assets");
+	if (fs.existsSync(localAssets)) {
+		return localAssets;
+	}
+	// On Vercel, assets are deployed to /var/task root
+	const vercelAssets = path.resolve("/var/task");
+	if (
+		fs.existsSync(vercelAssets) &&
+		fs.existsSync(path.join(vercelAssets, "workout-plan.html"))
+	) {
+		return vercelAssets;
+	}
+	return localAssets; // Return default and let readWidgetHtml handle the error
+})();
 
 function readWidgetHtml(componentName: string): string {
 	if (!fs.existsSync(ASSETS_DIR)) {
