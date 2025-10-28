@@ -1,22 +1,33 @@
-/* Smooth scrolling for exercise list */
-.workout-plan-list {
-  scroll-behavior: smooth;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    overflow: visible;
+  }
 }
 
-/* Custom scrollbar for better UX */
-.workout-plan-list::-webkit-scrollbar {
-  width: 6px;
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    max-height: 1000px;
+    overflow: hidden;
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
 }
 
-.workout-plan-list::-webkit-scrollbar-track {
-  background: transparent;
+.exercise-details-enter {
+  animation: slideDown 0.5s ease-out forwards;
 }
 
-.workout-plan-list::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
-
-.workout-plan-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+.exercise-details-exit {
+  animation: slideUp 0.5s ease-in forwards;
 }
