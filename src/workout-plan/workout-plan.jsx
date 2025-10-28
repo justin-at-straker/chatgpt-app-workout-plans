@@ -47,14 +47,14 @@ function StatChip(props) {
 function ExerciseCard({ ex, index, total, isComplete, onToggleComplete }) {
   return (
     <div
-      className="rounded-2xl p-4 transition-all border"
+      className="rounded-3xl p-4 transition-all border"
       style={{
         background: isComplete ? COLORS.teaGreen : COLORS.white,
         borderColor: isComplete ? COLORS.teaGreen : COLORS.antiflash,
         opacity: isComplete ? 0.7 : 1,
       }}
     >
-      <div className="flex items-start justify-between gap-4 mb-3">
+      <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-medium text-slate-400">Exercise {index + 1}/{total}</span>
@@ -63,7 +63,7 @@ function ExerciseCard({ ex, index, total, isComplete, onToggleComplete }) {
         </div>
         <button
           onClick={() => onToggleComplete(index)}
-          className="rounded-lg px-3 py-2 text-sm font-medium transition active:scale-95 whitespace-nowrap text-slate-600"
+          className="rounded-full px-5 py-3 text-sm font-medium transition active:scale-95 whitespace-nowrap text-slate-600"
           style={{ background: isComplete ? COLORS.antiflash : COLORS.apricot }}
           title={isComplete ? "Mark not done" : "Mark done"}
         >
@@ -75,17 +75,17 @@ function ExerciseCard({ ex, index, total, isComplete, onToggleComplete }) {
 
       <div className="grid grid-cols-3 gap-2 text-sm">
         <div className="rounded-xl bg-slate-50 p-3 text-center">
-          <div className="text-xs text-slate-400 mb-1">Sets × Reps</div>
+          <div className="text-xs text-slate-400 mb-1">💪 Sets × Reps</div>
           <div className="font-semibold text-slate-800">{ex.sets} × {ex.reps}</div>
         </div>
         {ex.weight && (
           <div className="rounded-xl bg-slate-50 p-3 text-center">
-                <div className="text-xs text-slate-400 mb-1">Weight</div>
+                <div className="text-xs text-slate-400 mb-1">⚖️ Weight</div>
             <div className="font-semibold text-slate-800">{ex.weight}</div>
           </div>
         )}
         <div className="rounded-xl bg-slate-50 p-3 text-center">
-          <div className="text-xs text-slate-400 mb-1">Rest</div>
+          <div className="text-xs text-slate-400 mb-1">😤 Rest</div>
           <div className="font-semibold text-slate-800">{secondsToClock(ex.restSeconds)}</div>
         </div>
       </div>
@@ -111,17 +111,17 @@ function PlanHeader({ plan, completedCount }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-2xl p-4" style={{ background: COLORS.lightBlue }}>
-          <div className="text-xs text-slate-600 mb-1">Total Sets</div>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="rounded-3xl p-4" style={{ background: COLORS.lightBlue }}>
+          <div className="text-xs text-slate-600 mb-1">💪 Total Sets</div>
           <div className="text-2xl font-bold text-slate-600">{totalSetsCount}</div>
         </div>
-        <div className="rounded-2xl p-4" style={{ background: COLORS.teaGreen }}>
-          <div className="text-xs text-slate-600 mb-1">Est. Time</div>
+        <div className="rounded-3xl p-4" style={{ background: COLORS.teaGreen }}>
+          <div className="text-xs text-slate-600 mb-1">⏱️ Est. Time</div>
           <div className="text-2xl font-bold text-slate-600">{secondsToClock(totalRestTime)}</div>
         </div>
-        <div className="rounded-2xl p-4" style={{ background: COLORS.apricot }}>
-          <div className="text-xs text-slate-600 mb-1">Progress</div>
+        <div className="rounded-3xl p-4" style={{ background: COLORS.apricot }}>
+          <div className="text-xs text-slate-600 mb-1">📈 Progress</div>
           <div className="text-2xl font-bold text-slate-600">{Math.round((completedCount / plan.exercises.length) * 100)}%</div>
         </div>
       </div>
@@ -155,7 +155,7 @@ export default function App() {
         <PlanHeader plan={plan} completedCount={completedExercises.size} />
 
         {/* Exercises */}
-        <section className="grid gap-3">
+        <section className="grid gap-2 mt-2">
           {plan.exercises.map((ex, i) => (
             <ExerciseCard 
               key={`${ex.name}-${i}`} 
